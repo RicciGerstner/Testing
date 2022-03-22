@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "Demo"
+version = "0.1.0"
+description = "Demo"
+authors = ["Ricci Gerstner <ricci.gerstner@ninetyone.com>"]
+readme = "README.md"
+homepage = "https://github.com/NinetyOne-GitHub/Demo"
+repository = "https://github.com/NinetyOne-GitHub/Demo"
+classifiers = [
+    "Programming Language :: Python :: 3.8.9",
+]
+
+[[tool.poetry.source]]
+name = "nexus"
+url = "https://lddevnexdc1:1443/repository/pypy-all/simple"
+
+[tool.poetry.dependencies]
+python = "^3.8.9"
+fastapi = "^0.75.0"
+requests = "^2.27.1"
+uvicorn = "^0.16.0"
+python-certifi-win32 = { version = "^1.6", markers = "platform_system == 'Windows'", optional = true}
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.0"
+black = "^22.0.0"
+isort = "^5.10.0"
+pytest = "^7.0.0"
+pytest-cov = "^3.0.0"
+pre-commit = "^2.17.0"
+
+[tool.poetry.extras]
+all = ["python-certifi-win32"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["Demo"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+
+[tool.black]
+line-length = 95
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 95

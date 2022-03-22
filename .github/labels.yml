@@ -1,0 +1,24 @@
+- name: feature
+  description: New feature
+  color: a2eeef
+- name: bug
+  description: Something isn't working
+  color: d73a4a
+- name: chore
+  description: Chore
+  color: fc964e
+- name: breaking
+  description: Breaking Changes
+  color: 7c3ea5
+- name: removal
+  description: Removals and Deprecations
+  color: f00000
+- name: "skip-changelog"
+  description: Changes that should be omitted from the release notes
+  color: ededed
+- name: question
+  description: Further information is requested
+  color: d876e3
+- name: dependencies
+  description: Dependencies
+  color: 00ce44

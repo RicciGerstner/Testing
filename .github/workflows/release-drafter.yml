@@ -1,0 +1,29 @@
+name: Release Drafter
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+jobs:
+  draft_release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Require PR to have one label from set
+        id: "check_label"
+        uses: mheap/github-action-required-labels@v1
+        with:
+          mode: exactly
+          count: 1
+          labels: "breaking, feature, bug, chore, dependencies, removal, skip-changelog"
+
+      - name: Draft Release
+        if: ${{ success() }}
+        uses: release-drafter/release-drafter@v5.15.0
+        with:
+          config-name: release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
